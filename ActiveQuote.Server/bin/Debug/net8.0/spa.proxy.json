@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:4200",
+"RedirectUrl": "",
+"LaunchCommand": "npm start",
+"WorkingDirectory": "C:\\Users\\44740\\source\\repos\\ActiveQuote\\ActiveQuote.Server\\..\\activequote.client",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}
