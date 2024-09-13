@@ -39,55 +39,55 @@ export class AppComponent implements OnInit {
     var isValid = true;
     // First Name validation
 
-    //  if (this.firstName.trim() === "") {
-    //      this.error  = "First name is required.";
-    //      isValid = false;
-    //  }
-    //  // Last Name validation
+     if (this.firstName.trim() === "") {
+         this.error  = "First name is required.";
+         isValid = false;
+     }
+     // Last Name validation
 
-    //  if (this.lastName.trim() === "") {
-    //      isValid = false;
-    //  }
+     if (this.lastName.trim() === "") {
+         isValid = false;
+     }
 
-    //  // Date of Birth validation
+     // Date of Birth validation
 
-    //  if (this.dob === "") {
-    //     this.error = "Date of birth is required.";
-    //      isValid = false;
-    //  }
-    //  // Email validation
+     if (this.dob === "") {
+        this.error = "Date of birth is required.";
+         isValid = false;
+     }
+     // Email validation
 
-    //  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    //  if (!emailPattern.test(this.email)) {
-    //      this.error = "Please enter a valid email address.";
-    //      isValid = false;
-    //  }
+     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+     if (!emailPattern.test(this.email)) {
+         this.error = "Please enter a valid email address.";
+         isValid = false;
+     }
 
-    //  // Phone Number validation
+     // Phone Number validation
 
-    //  const phonePattern = /^[0-9]{10}$/;
-    //  if (!phonePattern.test(this.phone)) {
-    //      this.error = "Please enter a 10-digit phone number.";
-    //      isValid = false;
-    //  }
-    //  if (!isValid) {
-    //      event.preventDefault();
-    //      console.log('error') // Prevent form submission if validation fails
-    //  }
-    //  else{
-    //   // this.http.post<Quote>('/api/submit-quote', formData).subscribe(
-    //   //   (response: Quote) => {
-    //   //     // Handle the response, which is a Quote object
-    //   //     this.returnedQuote = response;
-    //       console.log('Returned Quote success');
-    //   //   // },
-    //   //   // (error) => {
-    //   //   //   // Handle the error
-    //   //   //   console.error('Error submitting the form:', error);
-    //   //   //   this.error = 'An error occurred while submitting the form. Please try again.';
-    //   //   // }
-    //   // );
-    //  }
+     const phonePattern = /^[0-9]{10}$/;
+     if (!phonePattern.test(this.phone)) {
+         this.error = "Please enter a 10-digit phone number.";
+         isValid = false;
+     }
+     if (!isValid) {
+         event.preventDefault();
+         console.log('error') // Prevent form submission if validation fails
+     }
+     else{
+      this.http.post<Quote>('/api/submit-quote', formData).subscribe(
+        (response: Quote) => {
+          // Handle the response, which is a Quote object
+          this.returnedQuote = response;
+          console.log('Returned Quote success');
+        },
+        (error) => {
+          // Handle the error
+          console.error('Error submitting the form:', error);
+          this.error = 'An error occurred while submitting the form. Please try again.';
+        }
+      );
+     }
     this.http.post<Quote>('http://localhost:7075/Quote/submit-quote', formData).subscribe(
       (response: Quote) => {
         // Handle the response, which is a Quote object
