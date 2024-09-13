@@ -1,24 +1,30 @@
-﻿<h1 id="tableLabel">Weather forecast</h1>
+﻿<h1 >Active Quote</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
 
-<p *ngIf="!forecasts"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
 
-<table *ngIf="forecasts">
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let forecast of forecasts">
-            <td>{{ forecast.date }}</td>
-            <td>{{ forecast.temperatureC }}</td>
-            <td>{{ forecast.temperatureF }}</td>
-            <td>{{ forecast.summary }}</td>
-        </tr>
-    </tbody>
-</table>
+<p>This component demonstrates quote generation from the server.</p>
+
+
+<form (ngSubmit)="onSubmit($event)" #quoteForm>
+    <label for="firstName">First Name:</label><br>
+    <input type="text" [(ngModel)]="firstName" id="firstName"  name="firstName" required><br>
+    <span id="firstNameError" class="error"></span><br>
+
+    <label for="lastName">Last Name:</label><br>
+    <input type="text" [(ngModel)]="lastName" id="lastName" name="lastName" required><br>
+    <span id="lastNameError" class="error"></span><br>
+
+    <label for="dob">Date of Birth:</label><br>
+    <input type="date" [(ngModel)]="dob" id="dob" name="dob" required><br>
+    <span id="dobError" class="error"></span><br>
+
+    <label for="email">Email Address:</label><br>
+    <input type="email" [(ngModel)]="email" id="email" name="email" required><br>
+    <span id="emailError" class="error"></span><br>
+
+    <label for="phone">Phone Number:</label><br>
+    <input type="tel" [(ngModel)]="phone" id="phone" name="phone" pattern="[0-9]{10}" required><br>
+    <span id="phoneError" class="error"></span><br>
+
+    <button type="submit">Submit</button>
+</form>
