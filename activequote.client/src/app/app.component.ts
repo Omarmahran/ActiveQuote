@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms'; // <-- Import FormsModule
 import { HttpClientModule } from '@angular/common/http';
 
 // Define the Quote interface
-interface Quote {
-  insurersName: string; // The name of the insurance provider
-  costPerMonth: number; // The cost per month for the quote
-  lengthOfPolicy: number;
+export class Quote {
+  insurersName: string = ""; // The name of the insurance provider
+  costPerMonth: number =0; // The cost per month for the quote
+  lengthOfPolicy: number = 0;
 }
 
 @Component({
@@ -22,7 +22,8 @@ export class AppComponent implements OnInit {
   public email: string = '';
   public phone: string = '';
   public error: string = '';
-  public returnedQuote: Quote | null = null; // Store the returned Quote
+  public returnedQuote: Quote = new Quote; // Store the returned Quote
+  public onSuccess: boolean = false;  // Boolean to show/hide the card component
 
   constructor(private http: HttpClient) {}
 
@@ -93,6 +94,7 @@ export class AppComponent implements OnInit {
         // Handle the response, which is a Quote object
         this.returnedQuote = response;
         console.log('Returned Quote success');
+        this.onSuccess = true; // Set to true when the request is successful
       },
 
       (error) => {
