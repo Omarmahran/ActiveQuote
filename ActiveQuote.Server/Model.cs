@@ -5,13 +5,13 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class BloggingContext : DbContext
+    public class QuoteContext : DbContext
     {
         public DbSet<Quote> Quotes { get; set; }
 
         public string DbPath { get; }
 
-        public BloggingContext()
+        public QuoteContext()
         {
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);

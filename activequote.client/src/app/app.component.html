@@ -27,4 +27,6 @@
     <span id="phoneError" class="error"></span><br>
 
     <button type="submit">Submit</button>
+
+    <app-card *ngIf="onSuccess" [quote]="returnedQuote"></app-card>
 </form>
